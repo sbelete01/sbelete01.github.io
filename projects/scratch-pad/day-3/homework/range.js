@@ -23,8 +23,25 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
+    // I: two numbers O: array of numbers C: inclusive of input E: same number for ranges
+    // create an global array variable 
+    var rangeArr = [];
+    // 3 cases start > end, start < end, start = end
+    if(start < end){
+        // for loop through paramters adding range to rangeArr
+        // start: start stop: end
+        for(var i = start; i <= end; i++){
+            // push i into rangeArr
+            rangeArr.push(i);
+        } return rangeArr;
+    } else if (start > end){
+        // for loop loop backwards through paramters adding range to rangeArr
+        // start: end stop: start
+        for(var i = start; i >= end; i--){
+            // push i into rangeArr
+            rangeArr.push(i);
+        } return rangeArr;
+    }
     
     
     // YOUR CODE GOES ABOVE HERE //

@@ -13,7 +13,22 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    // separate function into string and number responses
+    // I: base number O: function
+    // C: out function should test whether given number is greater than base E: input can be string or number
+    if (typeof base === 'number'){
+        // return function
+        return function(givenNum){
+            // test whehter given num greater than base
+            return givenNum > base;
+        };
+    } else if (typeof base == 'string'){
+        // return function
+        return function(givenStr){
+            // test whehter given string greater than base
+            return givenStr > base;
+        };
+    }
     
     
     
@@ -27,8 +42,22 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
+    // separate function into string and number responses
+    // I: base number O: function
+    // C: output function should test whether given number is less than base E: input can be string or number
+    if(typeof base == 'string'){
+        // return function
+        return function (givenStr){
+            // test whether given str less than base
+            return givenStr < base;
+        };
+    } else if (typeof base === 'number'){
+        // return function
+        return function (givenNum){
+            // test whehter given num less than base
+            return givenNum < base;
+        };
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -41,9 +70,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    // I: single char O: function C: test whether given string starts with input Char
+    // return function
+    return function(givenStr){
+        // test whehter given string starts with starts with char
+        // force both given and base to upper case to check if same letter not if same letter and same capitalization
+        return startsWith.toUpperCase() === givenStr[0].toUpperCase();
+    }
     
     // YOUR CODE ABOVE HERE //
 }
@@ -55,7 +88,14 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    // I: single char O: function C: test given str last char with given char
+    // return function
+    return function (givenStr){
+        // return test of given last char with given char
+        // force upper case to just check if same last char
+        // use length property to accesss last char of given string
+        return endsWith.toUpperCase() === givenStr[givenStr.length-1].toUpperCase();
+    }
     
     
     
@@ -71,7 +111,20 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    // I: array of strings & modifying function
+    // O: array of strings modified
     
+    // create global array to hold modified strings
+    var arrayModStr = [];
+    
+    // loop over array of strings
+    // start: 0 stop: strings[strings.length-1]
+    for (var i = 0; i < strings.length; i++){
+        // push modified strings into array
+        arrayModStr.push(modify(strings[i]));
+    }
+    // return array of modified strings
+    return arrayModStr;
     
     
     
@@ -89,7 +142,18 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+    // I: array of strings & function to test strings
+    // O: boolean 
+    // C: test array of strings with function
+    // loop through array of strings
+    // start: 0 stop: strings[strings.length-1]
+    for (var i = 0; i < strings.length; i++){
+        // pass strings through test
+        // if one test fails return false
+        if(test(strings[i]) === false){
+            return false;
+        } 
+    } return true;
     
     
     
