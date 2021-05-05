@@ -92,9 +92,9 @@ function getRandom(animals) {
   return Math.random();
 }
  // [ ] Using a random index from this function that you just created, get a random animal and add its `name` to `friends`.
-friends = function getRandom(animals) {
-  return Math.random();
-};
+// friends = function getRandom(animals) {
+//   return Math.random();
+// };
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
