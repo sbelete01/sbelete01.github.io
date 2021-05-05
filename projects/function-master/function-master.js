@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+    return Object.values(object);
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +11,7 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+    return Object.keys(object).join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +19,13 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    let str = [];
+    for(var key in object){
+        if(typeof object[key] === 'string'){
+            str.push(object[key]);
+        }
+    }
+    return str.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +33,11 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    if(Array.isArray(collection)){
+        return "array";
+    } else {
+        return "object";
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -36,6 +46,7 @@ function arrayOrObject(collection) {
 
 function capitalizeWord(string) {
     
+    return string[0].toUpperCase() + string.slice(1,string.length);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +54,14 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+   //split words into array
+   let arr = string.split(" ");
+    let arr2 = [];
+   for(var i = 0; i <= arr.length-1; i++ ){
+        arr2.push(arr[i][0].toUpperCase() + arr[i].slice(1));
+   } 
+  //  console.log(arr);
+   return arr2.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +69,7 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    return "Welcome " + object.name[0].toUpperCase() + object.name.slice(1) + "!";
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -59,15 +77,22 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
-}
+    // return `${object.name[0].toUpperCase()} + ${object.slice(1)} is a ${object.species[0].toUpperCase()} + ${object.species.slice(1)}`
+    return object.name[0].toUpperCase() + object.name.slice(1) + " is a " + object.species[0].toUpperCase() + object.species.slice(1);
+;}
 
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    if(!object.noises){
+        return "there are no noises";
+    }
+    if(!Array.isArray(object.noises) || object.noises.length === 0){
+        return "there are no noises";
+    }
+    return object.noises.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -75,7 +100,13 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    let arrOfStr = string.split(" ");
+    for (let i = 0; i <arrOfStr.length; i++){
+        if(arrOfStr[i].toUpperCase() === word.toUpperCase()){
+            return true;
+        }
+    }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -83,7 +114,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    object.friends.push(name);
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
