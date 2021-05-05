@@ -95,6 +95,7 @@ function createEndsWithFilter(endsWith) {
         // force upper case to just check if same last char
         // use length property to accesss last char of given string
         return endsWith.toUpperCase() === givenStr[givenStr.length-1].toUpperCase();
+
     }
     
     
