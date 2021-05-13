@@ -195,9 +195,9 @@ function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     // I: two strings O: 1 number
     // compare stringOne vs two one with lower value is higher alphabetically
-    if (stringOne < stringTwo){
+    if (stringOne > stringTwo){
         return 1;
-    } else if(stringOne > stringTwo){
+    } else if(stringOne < stringTwo){
         return -1;
     // // if string1 equals string2 return zero
     } else {
@@ -219,9 +219,9 @@ function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     // I: two strings O: 1 number
     // compare stringOne vs two one with lower value is higher alphabetically
-    if (stringOne > stringTwo){
+    if (stringOne < stringTwo){
         return 1;
-    } else if(stringOne < stringTwo){
+    } else if(stringOne > stringTwo){
         return -1;
     // // if string1 equals string2 return zero
     } else {

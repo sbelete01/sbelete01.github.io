@@ -123,7 +123,14 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    if(object.friends){
+    for(let i = 0; i < object.friends.length; i++){
+        if(object.friends[i] === name){
+         return true;
+        } 
+    }
+        }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -131,7 +138,10 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    // name = {name: 'name',
+    //     friends: friends
+    //     }
+    // for(let i = 0; i < array.length; i++)
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -139,15 +149,23 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+   object[key] = value;
+   return object;
 }
 
+    
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for (var i = 0; i < array.length; i++){
+        for (var key in object) {
+            if (object.hasOwnProperty(array[i])) {
+                delete object[array[i]];
+            }
+        }
+    }    
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -155,7 +173,8 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    let unique = [...new Set(array)];
+    return unique;
 }
 
 //////////////////////////////////////////////////////////////////////

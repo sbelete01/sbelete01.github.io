@@ -39,7 +39,7 @@ function makeContact(id, nameFirst, nameLast) {
     return {
         id: id,
         nameFirst: nameFirst,
-        nameLast: nameLast
+        nameLast: nameLast,
     };
 } 
 
@@ -48,12 +48,57 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts = makeContact();
-    
+    var contacts = [];
+
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        // takes a contact object to be added to the contact-list
+        addContact: function(contact) {
+            // add new contact to contacts array
+            contacts.push(contact);
+        },
+        // findContact(fullName)
+        // takes a full-name String, like 'Max Gaudin', and
+        // returns the contact object if found in the contacts-list, or,
+        // undefined if the fullName does not match any contacts in the list
+        findContact: function(fullName) {
+            // loop through contacts array
+            for (var i = 0; i < contacts.length; i++){
+                // check if fullName matches any contact
+                if (fullName === `${contacts[i].nameFirst} ${contacts[i].nameLast}`){
+                    // return contact object if found
+                    return contacts[i];
+                }
+                // return undefined if no match
+                return undefined;
+            } 
+        },
+        // removeContact(contact): takes a contact object to be removed from
+        // the contact-list.
+        removeContact: function(contact){
+             // loop through contacts array
+            for (var i = 0; i < contacts.length; i++){
+                // check if contact matches any fullname from contact
+                if (contact.nameFirst === contacts[i].nameFirst){
+                    // delete contact object if found
+                    contacts.splice(i,1);
+                }
+            } 
+        },
+        // add a printAllContactNames() Function to your makeContactList() factory.
+        // return a String formated with all the full-names of the separated 
+        // by line breaks
+        // declare names array to hold full names of contacts
+        printAllContactNames: function(){
+            let names = [];
+            // loop through contacts array to add to names array
+            for (let i = 0; i < contacts.length; i++){
+                // add contacts full names to names array
+                names.push(`${contacts[i].nameFirst} ${contacts[i].nameLast}`);
+            } return names.join('\n');
         }
     };
 }
